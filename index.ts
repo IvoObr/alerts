@@ -18,7 +18,7 @@ cron.schedule('*/59 * * * *', async () => {
 
 
 
-    if (price < 1950) {
+    if (price < Number(process.env.HIGH_VALUE)) { 
       const info = await sendMail("Gold price now is " + price + " USD per troy ounce.");
       logger.info("Message sent: %s", info.messageId);
       logger.info("Done");
@@ -26,13 +26,13 @@ cron.schedule('*/59 * * * *', async () => {
 
 
 
-    if (price < 1850) {
+    if (price < Number(process.env.LOW_VALUE)) { 
       const info = await sendMail("Gold price now is " + price + " USD per troy ounce.");
       logger.info("Message sent: %s", info.messageId);
       logger.info("Done");
     }
 
-    logger.warn('Price is above 1950 USD per troy ounce.')
+    logger.warn('Price is above ', Number(process.env.HIGH_VALUE), ' USD per troy ounce.')
     
   });
 
