@@ -5,7 +5,7 @@ const options = {
     logInFile: false,
     logLevel: process.env.LOG_LEVEL
 };
-
+    
 const logger = new Logger(options);
 
 export default logger;

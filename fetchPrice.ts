@@ -13,7 +13,7 @@ const requestOptions:  RequestInit = {
   redirect: 'follow'
 };
 
-export const fetchPrice = () => fetch("https://www.goldapi.io/api/XAU/USD", requestOptions)
+export const fetchPrice = () => fetch(process.env.API_URL, requestOptions)
   .then(response => response.text())
   .then(result => {
     return result

@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const commodity = process.env.COMMODITY;
 
 
 let transporter = nodemailer.createTransport({
@@ -16,9 +17,9 @@ let transporter = nodemailer.createTransport({
 
 export const sendMail = async (text: string) => {
         return await transporter.sendMail({
-        from: `"GoldPriceAlerts" <${process.env.MAILER_USER}>`,
+        from: `"${commodity}PriceAlerts" <${process.env.MAILER_USER}>`,
         to: process.env.EMAIL,
-        subject: 'Gold Price Alerts',
+        subject: `${commodity}PriceAlerts`,
         text: text,
     })
 }
